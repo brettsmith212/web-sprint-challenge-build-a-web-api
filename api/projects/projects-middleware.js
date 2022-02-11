@@ -12,6 +12,16 @@ async function validateProject(req, res, next) {
   next();
 }
 
+async function validatePostingProject(req, res, next) {
+  let { name, description } = req.body;
+  if (!name || !description) {
+    res.status(400).json({ message: "must include name and description" });
+    return;
+  }
+  next();
+}
+
 module.exports = {
   validateProject,
+  validatePostingProject,
 };

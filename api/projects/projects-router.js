@@ -1,7 +1,10 @@
 // Write your "projects" router here!
 const express = require("express");
 const Projects = require("./projects-model");
-const { validateProject } = require("./projects-middleware");
+const {
+  validateProject,
+  validatePostingProject,
+} = require("./projects-middleware");
 
 const router = express.Router();
 
@@ -19,6 +22,16 @@ router.get("/:id", validateProject, async (req, res) => {
     res.status(200).json(req.project);
   } catch (e) {
     res.status(500).json({ message: "error getting project" });
+  }
+});
+
+router.post("/", validatePostingProject, async (req, res) => {
+  try {
+    let newProject = await Projects.insert(req.body);
+
+    res.status(201).json(newProject);
+  } catch (e) {
+    res.status(500).json({ message: "error posting new project" });
   }
 });
 
