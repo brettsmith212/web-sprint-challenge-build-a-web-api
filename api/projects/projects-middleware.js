@@ -21,7 +21,20 @@ async function validatePostingProject(req, res, next) {
   next();
 }
 
+async function validateUpdatingProject(req, res, next) {
+  let { name, description, completed } = req.body;
+  console.log(completed);
+  if (!name || !description || completed === undefined) {
+    res
+      .status(400)
+      .json({ message: "must include name, description and completed" });
+    return;
+  }
+  next();
+}
+
 module.exports = {
   validateProject,
   validatePostingProject,
+  validateUpdatingProject,
 };
