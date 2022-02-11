@@ -92,22 +92,22 @@ The description of the structure and extra information about each _resource_ sto
 
 #### Projects
 
-| Field       | Data Type | Metadata                                                                    |
-| ----------- | --------- | --------------------------------------------------------------------------- |
-| id          | number    | do not provide it when creating projects, the database will generate it     |
-| name        | string    | required                                                                    |
-| description | string    | required                                                                    |
-| completed   | boolean   | not required, defaults to false when creating projects                      |
+| Field       | Data Type | Metadata                                                                |
+| ----------- | --------- | ----------------------------------------------------------------------- |
+| id          | number    | do not provide it when creating projects, the database will generate it |
+| name        | string    | required                                                                |
+| description | string    | required                                                                |
+| completed   | boolean   | not required, defaults to false when creating projects                  |
 
 #### Actions
 
-| Field       | Data Type | Metadata                                                                                         |
-| ----------- | --------- | ------------------------------------------------------------------------------------------------ |
-| id          | number    | do not provide it when creating actions, the database will generate it                           |
-| project_id  | number    | required, must be the id of an existing project                                                  |
-| description | string    | required, up to 128 characters long                                                              |
-| notes       | string    | required, no size limit. Used to record additional notes or requirements to complete the action  |
-| completed   | boolean   | not required, defaults to false when creating actions                                            |
+| Field       | Data Type | Metadata                                                                                        |
+| ----------- | --------- | ----------------------------------------------------------------------------------------------- |
+| id          | number    | do not provide it when creating actions, the database will generate it                          |
+| project_id  | number    | required, must be the id of an existing project                                                 |
+| description | string    | required, up to 128 characters long                                                             |
+| notes       | string    | required, no size limit. Used to record additional notes or requirements to complete the action |
+| completed   | boolean   | not required, defaults to false when creating actions                                           |
 
 ### Database Persistence Helpers
 
@@ -147,7 +147,21 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+
+Node.js allows you to run JavaScript code outside the browser. This is extremely useful because now you can build back end servers that can run indepently of client side rendering (which is how JavaScript was originally only allowed to run). Express is a Node.js framework that helps you easily build API based back ends. It helps you organize your back end using routing and middleware, which is much easier than building a back end in just Node.js
+
 1. Understand and explain the use of Middleware.
+
+Middleware is a function that can run between the server receiving a request and sending a response. Middleware allows you to access the request and response objects and perform operations on them. This is useful for keeping your code DRY, as anything you are repeating in multiple routes can have middleware attached.
+
 1. The basic principles of the REST architectural style.
+
+REST stands for representational state transfer, which is a protocol for structuring a backend. This architecture has several principles. It must have a uniform interface, with self descriptive messages. It must use client-server design to enforce a separation of concerns. This means that client and server operate independently. It must also be stateless, which means that each request from the client must contain all necessary information to complete the request.
+
 1. Understand and explain the use of Express Routers.
+
+Express routers are used to organize your code into specific routes and their corresponding HTTP methods. They are very useful for grouping together routes that are relevant to each other, and makes it easier to debug problems.
+
 1. Describe tooling used to manually test the correctness of an API.
+
+Postman or HTTPie are used to manually test the correctness of an API. They allow you to use any HTTP method and test how the API is working. You can then debug any problems that arise.
