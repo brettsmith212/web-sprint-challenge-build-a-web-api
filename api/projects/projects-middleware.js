@@ -23,7 +23,6 @@ async function validatePostingProject(req, res, next) {
 
 async function validateUpdatingProject(req, res, next) {
   let { name, description, completed } = req.body;
-  console.log(completed);
   if (!name || !description || completed === undefined) {
     res
       .status(400)

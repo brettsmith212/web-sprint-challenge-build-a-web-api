@@ -19,17 +19,18 @@ async function validatePostingAction(req, res, next) {
     res
       .status(400)
       .json({ message: "must include notes, description and project_id" });
+    return;
   }
   let project = await Projects.get(project_id);
   if (!project) {
     res.status(404).json({ message: "invalid project_id" });
+    return;
   }
   next();
 }
 
 async function validateUpdatingAction(req, res, next) {
   let { notes, description, completed, project_id } = req.body;
-  console.log(completed);
   if (!notes || !description || completed === undefined || !project_id) {
     res.status(400).json({
       message: "must include notes, description, completed and project_id",
