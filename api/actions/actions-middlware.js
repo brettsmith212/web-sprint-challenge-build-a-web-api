@@ -27,7 +27,20 @@ async function validatePostingAction(req, res, next) {
   next();
 }
 
+async function validateUpdatingAction(req, res, next) {
+  let { notes, description, completed, project_id } = req.body;
+  console.log(completed);
+  if (!notes || !description || completed === undefined || !project_id) {
+    res.status(400).json({
+      message: "must include notes, description, completed and project_id",
+    });
+    return;
+  }
+  next();
+}
+
 module.exports = {
   validateAction,
   validatePostingAction,
+  validateUpdatingAction,
 };
